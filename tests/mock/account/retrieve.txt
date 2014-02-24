@@ -1,0 +1,31 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Mon, 24 Feb 2014 08:06:58 GMT
+Server: nginx
+Vary: Accept-Encoding,User-Agent
+X-RateLimit-Limit: 100
+X-RateLimit-Remaining: 98
+X-RateLimit-Reset: 1393229510
+Content-Length: 403
+Connection: keep-alive
+
+{
+  "account_id": 123,
+  "room_id": 322,
+  "name": "John Smith",
+  "chatwork_id": "tarochatworkid",
+  "organization_id": 101,
+  "organization_name": "Hello Company",
+  "department": "Marketing",
+  "title": "CMO",
+  "url": "http://mycompany.com",
+  "introduction": "Self Introduction",
+  "mail": "taro@example.com",
+  "tel_organization": "XXX-XXXX-XXXX",
+  "tel_extension": "YYY-YYYY-YYYY",
+  "tel_mobile": "ZZZ-ZZZZ-ZZZZ",
+  "skype": "myskype_id",
+  "facebook": "myfacebook_id",
+  "twitter": "mytwitter_id",
+  "avatar_image_url": "https://example.com/abc.png"
+}
