@@ -9,3 +9,10 @@ class ChatWorkError(Exception):
 class ArgumentUnknownTypeError (ChatWorkError):
 	pass
 
+class InvalidRequestError (ChatWorkError):
+	pass
+
+class AuthenticationError (ChatWorkError):
+	pass
+
+
