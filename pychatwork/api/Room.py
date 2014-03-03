@@ -1,7 +1,7 @@
 # coding: utf-8
 import pychatwork.api.model.Room
 import pychatwork.api.model.Message
-from . import errors
+from pychatwork.api import errors
 
 
 class Room:

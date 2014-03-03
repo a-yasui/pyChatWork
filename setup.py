@@ -23,7 +23,7 @@ with open('README.md') as file:
 setup(
     name='pychatwork',
     packages=['pychatwork'],
-    version='1.0.1',
+    version='1.0.1.1',
     author='',
     author_email='',
     url='',
