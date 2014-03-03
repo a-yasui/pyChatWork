@@ -57,7 +57,7 @@ class pyChatWork:
             return data
         elif status == 400 or status == 404:
             error_info = data.get('error')
-            raise errors.InvalidRequestError(status, error_info)
+            raise errors.InvalidRequestError("Invalid path {1} / {0}".format(path, method), status, error_info)
         elif status == 401:
             error_info = data.get('error')
             raise errors.AuthenticationError(status, error_info)
