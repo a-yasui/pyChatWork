@@ -1,11 +1,10 @@
 def mock_api(path, file_path, query=None, data=None):
     from httmock import urlmatch, response
-    import json
 
     @urlmatch(scheme='https', netloc='api.chatwork.com', path='/v1' + path)
-    def webpay_api_mock(url, request):
+    def cw_api_mock(url, request):
         assert query is None or url.query == query
-        assert data is None or json.loads(request.body) == data
+        assert data is None or request.body == data
 
         from os import path
         import codecs
@@ -35,4 +34,4 @@ def mock_api(path, file_path, query=None, data=None):
                         content=body.encode('utf-8'),
                         headers=headers,
                         request=request)
-    return webpay_api_mock
+    return cw_api_mock
