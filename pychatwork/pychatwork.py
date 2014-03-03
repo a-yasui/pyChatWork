@@ -2,6 +2,7 @@
 
 from .api.Account import Account
 from .api.Room    import Room
+from .api import errors
 
 import requests
 import json
