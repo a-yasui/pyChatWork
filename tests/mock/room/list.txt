@@ -1,0 +1,43 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Mon, 24 Feb 2014 08:06:58 GMT
+Server: nginx
+Vary: Accept-Encoding,User-Agent
+X-RateLimit-Limit: 100
+X-RateLimit-Remaining: 98
+X-RateLimit-Reset: 1393229510
+Content-Length: 403
+Connection: keep-alive
+
+[
+  {
+    "room_id": 123,
+    "name": "Group Chat Name",
+    "type": "group",
+    "role": "admin",
+    "sticky": false,
+    "unread_num": 10,
+    "mention_num": 1,
+    "mytask_num": 0,
+    "message_num": 122,
+    "file_num": 10,
+    "task_num": 17,
+    "icon_path": "https://example.com/ico_group.png",
+    "last_update_time": 1298905200
+  },
+  {
+    "room_id": 124,
+    "name": "Group Chat Name1",
+    "type": "group",
+    "role": "admin",
+    "sticky": false,
+    "unread_num": 10,
+    "mention_num": 1,
+    "mytask_num": 0,
+    "message_num": 122,
+    "file_num": 10,
+    "task_num": 17,
+    "icon_path": "https://example.com/ico_group.png",
+    "last_update_time": 1298905200
+  }
+]

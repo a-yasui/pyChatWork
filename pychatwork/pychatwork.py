@@ -1,6 +1,7 @@
 # coding: utf-8
 
 from .api.Account import Account
+from .api.Room    import Room
 
 import requests
 import json
@@ -15,10 +16,17 @@ class pyChatWork:
     def __init__ (self, key, api_base="https://api.chatwork.com/v1"):
         self.api_base = api_base
         self.account = Account(self)
+        self.room    = Room(self)
         self._headers['X-ChatWorkToken'] = key
 
     def post(self, path, params):
         return self._request('post', path, params)
+
+    def put(self, path, params):
+        return self._request('put', path, params)
+
+    def delete(self, path, params):
+        return self._request('delete', path, params)
 
     def get(self, path, params={}):
         return self._request('get', path, params)
@@ -26,7 +34,7 @@ class pyChatWork:
     def _request(self, method, path, params):
         try:
             r = requests.request(method, self.api_base + path,
-                                 data = json.dumps(params),
+                                 data = params,
                                  headers = self._headers)
         except requests.RequestException as exc:
             raise errors.ApiConnectionError(
@@ -43,17 +51,17 @@ class pyChatWork:
                 "Error while parsing response JSON %s:%s\n%s" %
                 (type(exc), exc, r.text),
                 None, None, exc)
-        error_info = data.get('error')
 
         if status >= 200 and status < 300:
             return data
         elif status == 400 or status == 404:
+            error_info = data.get('error')
             raise errors.InvalidRequestError(status, error_info)
         elif status == 401:
+            error_info = data.get('error')
             raise errors.AuthenticationError(status, error_info)
-        elif status == 402:
-            raise errors.CardError(status, error_info)
         else:
+            error_info = data.get('error')
             raise errors.ApiError(status, error_info)
 
 
