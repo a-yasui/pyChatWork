@@ -4,9 +4,18 @@ from .api.Account import Account
 from .api.Room    import Room
 from .api import errors
 
+import logging
 import requests
 import json
 
+## HTTP Debug Output if you wanna.
+# import httplib
+# httplib.HTTPConnection.debuglevel = 1
+# logging.basicConfig() 
+# logging.getLogger().setLevel(logging.DEBUG)
+# requests_log = logging.getLogger("requests.packages.urllib3")
+# requests_log.setLevel(logging.DEBUG)
+# requests_log.propagate = True
 
 class pyChatWork:
 
@@ -21,22 +30,25 @@ class pyChatWork:
         self._headers['X-ChatWorkToken'] = key
 
     def post(self, path, params):
-        return self._request('post', path, params)
+        self._headers["Content-Type"] = "application/x-www-form-urlencoded"
+        return self._request('POST', path, params)
 
     def put(self, path, params):
-        return self._request('put', path, params)
+        self._headers["Content-Type"] = "application/x-www-form-urlencoded"
+        return self._request('PUT', path, params)
 
     def delete(self, path, params):
-        return self._request('delete', path, params)
+        return self._request('DELETE', path, params)
 
     def get(self, path, params={}):
-        return self._request('get', path, params)
+        return self._request('GET', path, params)
 
     def _request(self, method, path, params):
         try:
             r = requests.request(method, self.api_base + path,
                                  data = params,
                                  headers = self._headers)
+            logging.warn("%s %s params:%s headers:%s", method, path, params, self._headers)
         except requests.RequestException as exc:
             raise errors.ApiConnectionError(
                 "Error while requesting API %s:%s" % (type(exc), exc),
@@ -57,7 +69,7 @@ class pyChatWork:
             return data
         elif status == 400 or status == 404:
             error_info = data.get('error')
-            raise errors.InvalidRequestError("Invalid path {1} / {0}".format(path, method), status, error_info)
+            raise errors.InvalidRequestError("Invalid path {1} / {0} => {2}".format(path, method, data), status, error_info)
         elif status == 401:
             error_info = data.get('error')
             raise errors.AuthenticationError(status, error_info)

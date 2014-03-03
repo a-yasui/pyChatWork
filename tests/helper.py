@@ -1,10 +1,11 @@
 def mock_api(path, file_path, query=None, data=None):
     from httmock import urlmatch, response
+    import json
 
     @urlmatch(scheme='https', netloc='api.chatwork.com', path='/v1' + path)
     def cw_api_mock(url, request):
         assert query is None or url.query == query
-        assert data is None or request.body == data
+        assert data is None or json.loads(request.body) == data
 
         from os import path
         import codecs
