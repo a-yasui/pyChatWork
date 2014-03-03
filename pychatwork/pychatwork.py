@@ -41,9 +41,9 @@ class pyChatWork:
             raise errors.ApiConnectionError(
                 "Error while requesting API %s:%s" % (type(exc), exc),
                 None, None, exc)
-        return self._process_response(r)
+        return self._process_response(r, path, method)
 
-    def _process_response(self, r):
+    def _process_response(self, r, path, method):
         status = r.status_code
         try:
             data = r.json()
