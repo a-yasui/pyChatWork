@@ -23,7 +23,7 @@ class pyChatWork:
         'Content-Type': 'application/json',
         'Accept': 'application/json'}
 
-    def __init__ (self, key, api_base="https://api.chatwork.com/v1"):
+    def __init__ (self, key, api_base="https://api.chatwork.com/v2"):
         self.api_base = api_base
         self.account = Account(self)
         self.room    = Room(self)
