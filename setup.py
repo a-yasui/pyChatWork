@@ -23,7 +23,7 @@ with open('README.md') as file:
 setup(
     name='pychatwork',
     packages=['pychatwork', "pychatwork.api", "pychatwork.api.model"],
-    version='1.0.1.7',
+    version='1.0.1.8',
     author='at yasu',
     author_email='a.yasui@gmail.com',
     url='https://github.com/a-yasui/pyChatWork',
@@ -49,6 +49,6 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules'
     ],
     install_requires=[
-        'requests==2.0.1'
+        'requests>=2.20.0'
     ]
 )
