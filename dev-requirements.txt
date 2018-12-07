@@ -1,7 +1,7 @@
 httmock==1.2
 py==1.4.20
 pytest==2.5.2
-requests==2.2.1
+requests>=2.20.0
 tox==1.7.0
 virtualenv==1.11.4
 wsgiref==0.1.2
